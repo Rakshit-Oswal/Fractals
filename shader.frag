@@ -47,7 +47,7 @@ float julia(vec2 z) {
     int numberofitrs = 0;
     for (int i = 0; i < iterations; i++) {
         vec2 znew;
-        vec2 c = vec2(-0.8, 0.156);
+        vec2 c = vec2(-0.7, 0.27015);
         znew.x = (z.x * z.x) - (z.y * z.y) + c.x;
         znew.y = (2.0 * z.x * z.y) + c.y;
         z = znew;
@@ -111,16 +111,16 @@ float julia(vec2 z) {
 //     return vec4(r * 0.5 + 0.5, g * 0.5 + 0.5, b * 0.5 + 0.5, 1.0);
 // }
 
-//custom polynomial gradient
-vec4 colorInterpolation(float t){
-    float r, g, b;
+// //custom polynomial gradient
+// vec4 colorInterpolation(float t){
+//     float r, g, b;
     
-    r = 15.0 * (1.0 - t) * t * t * t;
-    g = 9.5 * (1.0 - t) * (1.0 - t) * t * t;
-    b = 6.0 * (1.0 - t) * (1.0 - t) * (1.0 - t) * t; 
+//     r = 15.0 * (1.0 - t) * t * t * t;
+//     g = 9.5 * (1.0 - t) * (1.0 - t) * t * t;
+//     b = 6.0 * (1.0 - t) * (1.0 - t) * (1.0 - t) * t; 
 
-    return vec4(r, g, b, 1.0);
-}
+//     return vec4(r, g, b, 1.0);
+// }
 
 // //temperature gradient
 // vec4 colorInterpolation(float t) {
@@ -158,11 +158,11 @@ vec4 colorInterpolation(float t){
 //     return vec4(r, g, b, 1.0);
 // }
 
-// //night gradient
-// vec4 colorInterpolation(float t) {
-//     vec3 color = vec3(0.0, 0.0, 0.1) * (1.0 - t) + vec3(1.0, 0.6, 0.0) * t;
-//     return vec4(color, 1.0);
-// }
+//night gradient
+vec4 colorInterpolation(float t) {
+    vec3 color = vec3(0.0, 0.0, 0.1) * (1.0 - t) + vec3(1.0, 0.6, 0.0) * t;
+    return vec4(color, 1.0);
+}
 
 void main() {
     vec2 fragCoord = gl_FragCoord.xy;
